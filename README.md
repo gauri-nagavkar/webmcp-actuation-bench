@@ -3,6 +3,14 @@
 **A benchmark comparing plain-DOM browser automation vs. Chrome's WebMCP
 tool-calling API, on a realistic multi-step structured web form.**
 
+![Side-by-side demo: DOM actuation vs WebMCP tool calls](assets/side_by_side_demo.gif)
+
+*Left: an agent actuating the form via plain DOM clicks/typing. Right: the
+same task via WebMCP structured tool calls. Both scripted deterministically
+for this recording (not an LLM run) — see [Results](#results-gpt-4o-10-trials-per-variant)
+below for the actual LLM-agent benchmark numbers. Full video:
+[`assets/side_by_side_demo.mp4`](assets/side_by_side_demo.mp4).*
+
 ## Why this exists
 
 Multi-step web forms — job applications, expense reports, insurance claims,
@@ -30,7 +38,9 @@ modes.
 demo-dom/       Multi-step structured form, plain DOM only (baseline)
 demo-webmcp/    Identical form + WebMCP tool registration
 shared/         Shared schema, styles, and the on-device AI assist feature
-harness/        Benchmark runner, LLM agent harness, results, analysis/charts
+harness/        Benchmark runner, LLM agent harness, results, analysis/charts,
+                and the side-by-side demo recording scripts
+assets/         Generated side-by-side demo video/GIF
 ```
 
 ### The two demo variants
@@ -90,6 +100,19 @@ python3 -m http.server 8842 &
 #   http://localhost:8842/demo-dom/index.html
 #   http://localhost:8842/demo-webmcp/index.html
 ```
+
+### Regenerating the side-by-side demo recording
+
+```bash
+python harness/record_demo.py     # records assets/recording_raw/{dom,webmcp}.webm
+python harness/compose_video.py   # composites into assets/side_by_side_demo.{mp4,gif}
+```
+
+Both scripts run a deterministic, scripted fill sequence (same task as
+`harness/scripted_reference_trial.py`) at a deliberately slowed pace so the
+recording is watchable — this is a visual illustration of the two
+interaction models, not a benchmark run. `compose_video.py` requires
+`ffmpeg` and Pillow (`pip install pillow`, already in `requirements.txt`).
 
 ### 1. Scripted reference trial (no API key needed)
 

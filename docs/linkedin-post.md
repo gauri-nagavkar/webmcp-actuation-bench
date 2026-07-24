@@ -10,6 +10,8 @@ WebMCP was faster and cheaper when it worked — but its one failure was the mos
 
 Also wired up Chrome's on-device Prompt API (Gemini Nano, no server round-trip) for an AI-assisted answer drafter on the free-text fields.
 
+[Attach: side_by_side_demo.mp4 — split-screen recording, DOM actuation vs WebMCP tool calls completing the same task]
+
 Full writeup + repo (Playwright harness, raw per-trial data including the failure, reproducible in ~10 min): [link]
 
 Genuinely interested in this space — WebMCP, agentic web standards, on-device AI in the browser. Would love to hear from anyone else experimenting with this.
