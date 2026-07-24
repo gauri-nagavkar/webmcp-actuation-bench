@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Acme Corp — Job Application (DOM baseline)</title>
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ACME CORP</div>
+    <div class="variant-badge dom">DOM baseline — no WebMCP</div>
+  </header>
+
+  <main class="app">
+    <div class="stepper" id="stepper"></div>
+    <form id="app-form" class="card" autocomplete="off">
+      <div id="step-container"></div>
+      <div class="nav-row">
+        <button type="button" id="prev-btn">Back</button>
+        <button type="button" id="next-btn">Next</button>
+        <button type="submit" id="submit-btn" style="display:none">Submit Application</button>
+      </div>
+    </form>
+    <div id="success-banner" class="success-banner" style="display:none">
+      ✅ Application submitted successfully.
+    </div>
+  </main>
+
+  <script src="../shared/schema.js"></script>
+  <script src="../shared/ai-assist.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
